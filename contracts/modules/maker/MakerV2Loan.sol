@@ -15,21 +15,12 @@
 
 pragma solidity ^0.5.4;
 import "./MakerV2Base.sol";
+import "./IUniswapExchange.sol";
+import "./IUniswapFactory.sol";
 import "../../infrastructure/MakerRegistry.sol";
 
 contract JugLike {
     function drip(bytes32) external;
-}
-
-interface IUniswapFactory {
-    function getExchange(address _token) external view returns(IUniswapExchange);
-}
-
-interface IUniswapExchange {
-    function getEthToTokenOutputPrice(uint256 _tokensBought) external view returns (uint256);
-    function getEthToTokenInputPrice(uint256 _ethSold) external view returns (uint256);
-    function getTokenToEthOutputPrice(uint256 _ethBought) external view returns (uint256);
-    function getTokenToEthInputPrice(uint256 _tokensSold) external view returns (uint256);
 }
 
 /**
@@ -114,8 +105,8 @@ contract MakerV2Loan is MakerV2Base {
         mkrToken = tub.gov();
         jug = _jug;
         makerRegistry = _makerRegistry;
-        daiUniswap = _uniswapFactory.getExchange(address(daiToken));
-        mkrUniswap = _uniswapFactory.getExchange(address(mkrToken));
+        daiUniswap = IUniswapExchange(_uniswapFactory.getExchange(address(daiToken)));
+        mkrUniswap = IUniswapExchange(_uniswapFactory.getExchange(address(mkrToken)));
         // Authorize daiJoin to exit DAI from the module's internal balance in the vat
         vat.hope(address(daiJoin));
     }
