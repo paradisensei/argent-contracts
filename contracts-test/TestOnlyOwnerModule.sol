@@ -1,6 +1,6 @@
 pragma solidity ^0.5.4;
-import "../wallet/BaseWallet.sol";
-import "../modules/common/OnlyOwnerModule.sol";
+import "../contracts/wallet/BaseWallet.sol";
+import "../contracts/modules/common/OnlyOwnerModule.sol";
 
 /**
  * @title TestModule

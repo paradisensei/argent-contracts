@@ -1,7 +1,7 @@
 pragma solidity ^0.5.4;
 import "../base/Owned.sol";
 import "../modules/maker/MakerV2Base.sol";
-
+import "../../lib/maker/MakerV2Interfaces.sol";
 /**
  * @title MakerRegistry
  * @dev Simple registry containing a mapping between token collaterals and their corresponding Maker Join adapters.

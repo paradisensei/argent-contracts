@@ -1,7 +1,7 @@
 pragma solidity ^0.5.4;
-import "../wallet/BaseWallet.sol";
-import "../modules/common/BaseModule.sol";
-import "../modules/common/RelayerModuleV2.sol";
+import "../contracts/wallet/BaseWallet.sol";
+import "../contracts/modules/common/BaseModule.sol";
+import "../contracts/modules/common/RelayerModuleV2.sol";
 
 /**
  * @title TestModule
